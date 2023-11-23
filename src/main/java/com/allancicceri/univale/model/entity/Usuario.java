@@ -15,8 +15,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "grupo_id")
-    private GrupoUsuario grupo;
+    private String password;
+    private String role;
 }
