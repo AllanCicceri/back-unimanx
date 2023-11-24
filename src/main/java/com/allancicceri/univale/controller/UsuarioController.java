@@ -48,7 +48,21 @@ public class UsuarioController {
         return  ResponseEntity.notFound().build();
     }
 
-    
+    @PutMapping
+    public  ResponseEntity<Usuario> UpdateUser(@RequestBody Usuario usuario){
+        String senhaCriptografada = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(senhaCriptografada);
+        Usuario usuarioAtualizado = service.Update(usuario);
+
+        return ResponseEntity.ok(usuarioAtualizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity RemoveUser(@PathVariable int id){
+        service.Delete(id);
+        return ResponseEntity.ok().build();
+
+    }
 
 
 }

@@ -19,8 +19,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario Update(int id, Usuario usuario) {
-        return null;
+    public Usuario Update(Usuario usuario) {
+        return  repository.save(usuario);
     }
 
     @Override
@@ -40,6 +40,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void Delete(int id) {
-
+        repository.deleteById(id);
     }
 }
