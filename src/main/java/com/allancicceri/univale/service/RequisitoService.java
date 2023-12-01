@@ -9,4 +9,6 @@ public interface RequisitoService {
     Requisito FindById(int id);
     List<Requisito> FindAll();
     void Delete(int id);
+
+    List<Requisito> buscarPorProjeto(int id);
 }

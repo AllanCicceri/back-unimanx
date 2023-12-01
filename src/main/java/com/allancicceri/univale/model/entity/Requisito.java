@@ -19,7 +19,7 @@ public class Requisito {
     private String tipo; //funcional/não_funcional
     private int versao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "projeto_id")
     private Projeto projeto;
 }

@@ -18,7 +18,7 @@ public class VersaoRequisito {
     private String nome;
     private String descricao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "requisito_id")
     private Requisito requisito;
 }

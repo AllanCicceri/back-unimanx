@@ -2,6 +2,7 @@ package com.allancicceri.univale.controller;
 
 import com.allancicceri.univale.model.entity.Requisito;
 import com.allancicceri.univale.service.RequisitoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/requisitos")
 public class RequisitoController {
+    @Autowired
     private RequisitoService service;
     @GetMapping
     public ResponseEntity<List<Requisito>> GetAll(){
@@ -36,8 +38,16 @@ public class RequisitoController {
     }
 
     @DeleteMapping("/{id}")
-    public void Delete(@RequestParam int id){
+    public void Delete(@PathVariable int id){
+
         service.Delete(id);
+    }
+
+
+    @GetMapping("/projeto/{projetoId}")
+    public ResponseEntity<List<Requisito>> getRequisitosPorProjeto(@PathVariable int projetoId) {
+        List<Requisito> requisitos = service.buscarPorProjeto(projetoId);
+        return ResponseEntity.ok(requisitos);
     }
 
 
